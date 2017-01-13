@@ -1,20 +1,20 @@
 clear all; close all; clc;
 %% Setup
-%[input_signal, fs] = audioread('Thieves_who_rob_friends_deserve_jail.wav');
-%info = audioinfo('Thieves_who_rob_friends_deserve_jail.wav');
+[input_signal, fs] = audioread('Thieves_who_rob_friends_deserve_jail.wav');
+info = audioinfo('Thieves_who_rob_friends_deserve_jail.wav');
 
 %[input_signal, fs] = audioread('speech.wav');
 %info = audioinfo('speech.wav');
 
-[input_signal, fs] = audioread('furelise.wav');
-info = audioinfo('furelise.wav');
+%[input_signal, fs] = audioread('furelise.wav');
+%info = audioinfo('furelise.wav');
 
 fs = info.SampleRate;
 input_length = info.TotalSamples; 
 
 L=512; % L in samples
 S = round(L/2); %overlap
-TSR = 2;
+TSR = 1.2;
 
 Sout = S;
 Sin = round(Sout*TSR);
@@ -57,7 +57,8 @@ win = hanning (L, 'periodic');
     
 %% esecuzione output
     soundsc(output_signal,fs);
-   
+    %audiowrite('thieves x2.wav',output_signal,fs);
+    
 %% stampa dei grafici
 
     figure(1);
